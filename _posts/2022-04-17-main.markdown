@@ -1,0 +1,346 @@
+---
+layout: post
+title:  "The Guide to Everything"
+date:   2022-04-17 +0530
+comments: true
+categories: jekyll update
+---
+
+<script>
+function search() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('indexvals');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+}
+</script>
+
+<style>
+
+  #searchbar{
+     margin-left: 0%;
+     padding:15px;
+     border-radius: 10px;
+   }
+ 
+   input[type=text] {
+      width: 100%;
+      -webkit-transition: width 0.15s ease-in-out;
+      transition: width 0.15s ease-in-out;
+   }
+ 
+   /* When the input field gets focus,
+        change its width to 100% */
+   input[type=text]:focus {
+     width: 100%;
+   }
+
+</style>
+
+<a href="#networking-basics">go to networking</a>
+
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+
+Welcome to the whole documentation of everything I know about computers and systems.
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFluffySnowman%2Ffluffysnowman.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
+
+<div>
+
+<input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search for topics...">
+
+</div>
+
+<br>
+<hr>
+<br>
+
+# INDEX:
+
+Go to the [comments](#comments-section)
+
+<ol>
+    <li><a href="#networking-basics">Networking</a></li> 
+        <ul id="myUL">
+            <li class="indexvals"><a href="#networking-basics">Networking basics</a></li>
+            <li class="indexvals"><a href="#netmasks">Netmasks</a></li>
+            <li class="indexvals"><a href="#dhcp">DHCP</a></li>
+            <li class="indexvals"><a href="#dns">DNS</a></li>
+            <li class="indexvals"><a href="#change-your-ip">Change Your IP</a></li>
+            <li class="indexvals"><a href="#change-your-mac-address">Change your MAC Address</a></li>
+            <li class="indexvals"><a href="#change-your-dns">Change your DNS</a></li>
+            <li class="indexvals"><a href="#arp">Arp Scanning</a></li>
+        </ul>
+    <li class="indexvals"><a href="#operating-system-security">Security in Operating Systems</a></li>
+        <ul id="myUL">
+        </ul>
+</ol>
+
+<hr>
+
+# Networking Basics
+
+Networking is a simple yet complex part of the computing experience. It is essentially the connection between computers (phones and tablets included) and servers. The communication between these computers and servers is done through a network. Transmission of data (in packets) is done through a network.
+
+A network consists of many things. First thing is an IP (Internet Protocol) Address that is an address that tells the router on the network which computer is which. Learn how to change your IP Address [here](#change-your-ip). Sometimes people set up routers and firewalls to bind IP Addresses and MAC (Media Access Control) addresses. A MAC address is the address/hexadecimal code that identifies the ID of your NIC (Network Interface Card). Most people don't change MAC IDs or don't know how to. You can learn how to do this [here](#change-your-mac-address).
+
+The Default configuration for routers' gateways are `192.168.1.1`. A gateway is the network node through all traffic travels through to the WWW (World Wide Web) or another IP/MAC on your network. You can change the settings in the network to send data from IP to IP instead of routing it through the gateway too but that is a bit complicated and we will leave it for later.
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+#### Netmasks
+
+Each router has a certain amount of devices(IPs) that can connect to it. This is determined by the 1/24 or 0/24 added at the end of the gateway IP also known as netmask. IP calculators are the easier way of determining how many devices are allowed.
+For Example: A network with netmask of `/24` will allow up to 254 devices at a time however a network with netmask of `/23` will allow 510 devices at a time.
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+#### DHCP
+
+IP addresses can be changed very easily. There are certain protocols used for machines to automatically determine their IP addresses. One of these is known as DHCP (Dynamic Host Configuration Protocol). This protocol basically queries the IPs on the router and automatically chooses an IP (which has not been taken by any other machine (free ip)) for the machine when it connects to the network and assigns it to the machine.
+However, this protocol can be very problematic. Sometimes there is a problem where the router is queried by two different machines and the same IP is given to two different machines. This is called an "IP Conflict" and can be resolved by changing the IP address of the machine (setting the IP in settings to manual and changing it).
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+#### DNS
+
+Then we have the DNS, also known as Domain - Name - System. The DNS is basically a mediatory node which sends traffic from the router to the rest of the internet. It is used to name and identify services, computers and other resources on the internet. Changing your DNS can reduce load times on your website. Learn how to change your DNS [here](#change-your-dns).
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+### Change your ip
+
+To change your (LOCAL) IP address on windows;
+Start>Control Panel>Network and sharing centre>(left panel)>Change Adapter Settings.
+Once you have clicked the endpoint, simple select the adapter you want to change and right click>properties.
+
+You will be greeted with this window:
+
+Click on the blue/selected field shown in the image and click properties.
+
+<p align="center">
+<img src="/assets/pics/change_ip_0x1.png" alt="change_ip_0x1">
+</p>
+
+After you reach the properties page, Select the "Use the following IP address" option and enter the IP address you want to use.
+
+<p align="center">
+<img src="/assets/pics/change_ip_0x2.png" alt="change_ip_0x2">
+</p>
+
+Fill in the field according to your network configuration. To find out your network configuration, hit "control+r" to open the run window and type in `cmd` and hit enter.
+
+<p align="center">
+<img src="/assets/pics/change_ip_0x3.png" alt="change_ip_0x3">
+</p>
+
+Once you are in the terminal window, simply type in `ipconfig` and look for something that looks like this:
+
+<p align="center">
+<img src="/assets/pics/change_ip_0x4.png" alt="change_ip_0x4">
+</p>
+
+Fill in the respective fields in the respective boxes in your "Internet Protocol Version 4" window.
+Once you have closed and saved the control panel windows, the IP should have changed.
+Re-open the command prompt (cmd) window and type in the same command (`ipconfig`) to see your new IP and voila!
+
+[Back to Index](#index)<br>[leave a comment](#comments-section)
+
+<p align="center">----------</p>
+
+Now to change your IP configuration on linux. There are many ways to do this but in my opinion, the most efficient way to do this is through the CLI (Command Line Interface).
+
+First what you gotta do is check your current IP configuration and network interface name. TO do this type in `ifconfig` or `ip addr`.
+
+This will open up some text which you may not understand but all you have to look for is something that says `inet` and `netmask`.
+
+<p align="center">
+<img src="/assets/pics/change_ip_0x5.png" alt="change_ip_0x5">
+</p>
+
+<b>Note: Do not share what is in the `inet6` field or anything in the places that I've coloured out. Sharing this information can be potentially dangerous.</b>
+
+Once you have these details, all you have to do to change your IP is type in this command while replacing (interface_name) with the name of your network interface (the text on the complete left of the output), (ip_address) with the IP address you want to use and (netmask) with the netmask you want to use. You will also have to enter your superuser's password.
+
+<!--<pre><code class="bash testing0x1">-->
+```bash
+sudo ifconfig (interface_name) (ip_address) netmask (netmask_address)
+```
+
+
+There is also another way to change your IP (LOCAL). To do this, you have to find your network configuration file.
+On Debian, Ubuntu and other Linux distributions, this is usually located at `/etc/network/interfaces`.
+To edit this file, use a text editor of your preference. I would use `nano`.
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+and enter in these details:
+
+```bash
+iface <interface_name> inet static
+address <ip_address>
+netmask <network_mask>
+gateway <gateway_ip>
+```
+
+<p align="center"><img src="/assets/pics/change_ip_0x6.png" alt="change_ip_0x6"></p>
+
+Replace the values here as you did in the command abovel;then `control+o` to write to the file and `control+x` to exit.
+
+After all of this is done, you will have to restart your networking service. To do this on linux, type in `sudo service networking restart`.
+This command usually works for all distributions but may vary for other distributions so if you're not sure feel free to look it up online.
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+### Change your mac address
+
+Changing your MAC Address can be potentially useful or potentially harmful. It depends on what you're doing and if you know what you're doing. There are 2 ways to change/spoof your MAC Address. One is through changing the MAC address using your operating system(software) and one is changing it through your hardware. I do not recommand changing your hard MAC Address as it is quite a tough job to do for newbies and it will require you to manually take our your NIC (Network Interface Card) and replace it for another one which has a different MAC address. 
+However, you can change it through software aka your operating system's tools.
+
+Changing your MAC Address on linux is quite simple. First you need to install `macchanger`. To do this, use your default package manager and use the install syntax to install the `macchanger` package like so:
+
+```bash
+sudo apt-get install macchanger     [On Debian, Ubuntu and Mint]
+sudo yum install macchanger         [On RHEL/CentOS/Fedora and Rocky Linux/AlmaLinux]
+sudo emerge -a sys-apps/macchanger  [On Gentoo Linux]
+sudo pacman -S macchanger           [On Arch Linux]
+sudo zypper install macchanger 
+```
+
+While doing this, you wil get a prompt to change a setting where your MAC Address will be changed everytime you boot. This may cause problems so I would go with the "No" option.
+Once this is done, you can use the `macchanger` command to change your MAC Address.
+
+First you will need the network interface name. To do this type in:
+
+```bash
+ifconfig
+#OR YOU COULD TYPE IN
+ip a
+```
+
+Once you have found your network interface name you can use the `macchanger` command to change your MAC Address like so:
+
+```bash
+sudo service network-manager stop
+sudo ifconfig <interface name> down
+sudo macchanger -r <interface name>
+sudo service network-manager start
+sudo ifconfig <interface name> up
+```
+Where <interface name> is the name of your network interface (ex: `wlan0`).
+
+This will change your mac address to a random one. and the output of the command will look like this:
+
+<p align="center"><img src="/assets/pics/change_mac_0x1.png" alt="change_mac_0x1.png"></p>
+
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+### Change your DNS
+
+Changing your DNS can improve load times for websites and has many benefits. The most common DNS's are google's, cloudflare's and more.
+To do this on Windows, Follow the steps to your adapter settings in control panel as shown in the [how to change your IP](#change-your-ip) section.
+
+Once you have reached this page, add a DNS server manually.
+
+<p align="center"><img src="/assets/pics/change_dns_0x1.png" alt="change_dns_0x1.png"></p>
+
+Add a DNS server of your choice into the fields given. I prefer using cloudflare's DNS server as the first option and google's DNS server as the backup in case that fails. You can also add your own DNS server if you wish.
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+<p align="center">----------</p>
+
+Now to change your DNS server on linux. First you will have to find the resolv.conf file. It is usually located at `/etc/resolv.conf`.
+To edit this file, use a text editor of your preference. I would use `nano`.
+
+```bash
+sudo nano /etc/resolv.conf`
+```
+
+Remove everything thats in the file and add the following while changing x and y values with the DNS server of your choice.
+
+```bash
+nameserver x.x.x.x
+nameserver y.y.y.y.
+```
+
+then do `control+o` to write to the file and `control+x` to exit.
+
+<p align="center"><img src="/assets/pics/change_dns_0x2.png" alt="change_dns_0x2.png"></p>
+
+Then you will have to restart your computer. Open a terminal and type in:
+
+`reboot`
+
+And there you go! Your DNS server has been changed.
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+### ARP
+
+The Address Resolution Protocol, also known as ARP, is a protocol that connects an IP to a MAC address in a LAN (Local Area Network).
+ARP is usually used to see all the devices on a network. This is very helpful as the MAC address can be used to identify which device is which and what IP it has. This can also be used to resolve IP conflicts and counting the amount of devices on your network.
+Now let's get into using ARP to scan.
+
+On Windows and Linux, arp is a built in command so fire up a terminal and do this:
+
+```bash
+arp -a
+```
+
+This will list all the devices on your network via IPs and MAC IDs. 
+A way to count all the devices on a network if it is a large network is to use the verbose output of the ARP command `-v`.
+
+```bash
+arp -v
+```
+
+This will show the total amount of devices (as entries) in the list that is printed to the console. 
+Example:
+
+<p align="center">
+<img src="/assets/pics/arp_0x1.png" alt="arp_0x1">
+</p>
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+<hr>
+
+# Operating System Security
+
+[Back to Index](#index)<br><br>[Comment](#comments-section)
+
+# COMMENTS SECTION
+
+{% if page.comments %}
+
+<div id="disqus_thread"></div>
+<script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://fluffysnowman.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
+
+[Back to Index](#index)
+

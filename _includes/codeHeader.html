@@ -1,0 +1,23 @@
+<style>
+    .copy-code-button {
+        display: block;
+    }
+
+</style>
+
+<div class="code-header">
+    <button id="copyt" class="copy-code-button" onclick="copy()">
+      Copy code to clipboard
+    </button>
+  </div>
+  
+<script type="text/javascript">
+    function copy() {
+        var copy_text = document.getElementById("copy1");
+        copy_text.select();
+
+        navigator.clipboard.write(copy_text.value);
+
+        alert(copy_text + "copied");
+    }
+</script>
